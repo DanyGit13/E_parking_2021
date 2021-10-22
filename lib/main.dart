@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'E-parking',
       theme: CustomTheme.theme,
-      initialRoute: PaginaPrincipal.routeName,
+      initialRoute: Registro.routeName,
       routes: {
         HomePage.routeName: (_) => HomePage(),
         Registro.routeName: (_) => Registro(),

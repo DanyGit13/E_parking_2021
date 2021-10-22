@@ -11,7 +11,7 @@ class PaginaPrincipal extends StatelessWidget {
       ),
       body: Center(
         child: Container(
-          child: Text('Hello principal'),
+          child: Text('Hola  principal'),
         ),
       ),
     );
