@@ -1,4 +1,5 @@
 import 'package:e_parking/pages/menu_principal.dart';
+import 'package:e_parking/pages/mi_perfil.dart';
 import 'package:e_parking/pages/registro_en_aplicacion.dart';
 import 'package:e_parking/pages/pantalla_inicial.dart';
 import 'package:e_parking/pages/pagina_principal.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         Inicio_sesion.routeName: (_) => Inicio_sesion(),
         Pagina_principal.routeName: (_) => Pagina_principal(),
         Registro_aplicacion.routeName: (_) => Registro_aplicacion(),
+        Mi_perfil.routeName: (_) => Mi_perfil(),
       },
     );
   }
