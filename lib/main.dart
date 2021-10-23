@@ -5,7 +5,6 @@ import 'package:e_parking/pages/pantalla_inicial.dart';
 import 'package:e_parking/pages/pagina_principal.dart';
 import 'package:e_parking/style_utils.dart';
 import 'package:flutter/material.dart';
-
 import 'pages/inicio_sesion.dart';
 
 void main() => runApp(MyApp());
@@ -16,8 +15,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'E-parking',
-      theme: CustomTheme.theme,
-      initialRoute: Pagina_principal.routeName,
+      theme: ThemeData(
+        primarySwatch: Colors.deepPurple,
+      ),
+      initialRoute: Pantalla_inicial.routeName,
       routes: {
         Menu_principal.routeName: (_) => Menu_principal(),
         Pantalla_inicial.routeName: (_) => Pantalla_inicial(),

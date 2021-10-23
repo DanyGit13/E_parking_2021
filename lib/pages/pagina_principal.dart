@@ -11,9 +11,20 @@ class Pagina_principal extends StatelessWidget {
       ),
       body: Center(
         child: Container(
-          child: Text('Pagina principal'),
+          child: Text(
+            'Pagina principal de eparking',
+            style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.white),
+          ),
         ),
       ),
     );
   }
 }
+
+
+
+
+

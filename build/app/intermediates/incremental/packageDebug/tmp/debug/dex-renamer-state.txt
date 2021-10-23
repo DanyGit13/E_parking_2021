@@ -1,4 +1,4 @@
-#Mon Oct 18 23:29:30 CST 2021
-base.0=C\:\\src\\flutter_apps\\e_parking\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Sat Oct 23 00:46:08 CST 2021
+base.0=C\:\\src\\github\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
