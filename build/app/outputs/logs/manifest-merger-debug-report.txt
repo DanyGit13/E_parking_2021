@@ -52,7 +52,7 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\da
 	android:label
 		ADDED from C:\src\github\android\app\src\main\AndroidManifest.xml:5:9-34
 	android:icon
-		ADDED from C:\src\github\android\app\src\main\AndroidManifest.xml:6:9-43
+		ADDED from C:\src\github\android\app\src\main\AndroidManifest.xml:6:9-45
 activity#com.example.e_parking.MainActivity
 ADDED from C:\src\github\android\app\src\main\AndroidManifest.xml:7:9-35:20
 	android:launchMode
