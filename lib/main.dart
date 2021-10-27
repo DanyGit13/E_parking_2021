@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
-      initialRoute: Menu_principal.routeName,
+      initialRoute: Inicio_sesion.routeName,
       routes: {
         Menu_principal.routeName: (_) => Menu_principal(),
         Pantalla_inicial.routeName: (_) => Pantalla_inicial(),
