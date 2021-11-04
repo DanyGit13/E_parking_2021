@@ -30,7 +30,7 @@ class Mi_perfil extends StatelessWidget {
                     padding: EdgeInsets.zero,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50),
-                      side: BorderSide(color: Colors.black)),
+                      side: BorderSide(color: Colors.blueAccent)),
                     color: Color(0xFFF5F6F9),
                     onPressed: () {},
                     child: Icon(Icons.add_a_photo),
