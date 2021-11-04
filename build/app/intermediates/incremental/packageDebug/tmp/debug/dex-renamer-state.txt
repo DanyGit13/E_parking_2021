@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #Thu Nov 04 12:19:51 CST 2021
+=======
+#Thu Nov 04 10:59:36 CST 2021
+>>>>>>> e16b9c87644641c1467f54b2559e247305861543
 base.0=C\:\\src\\github\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
