@@ -1,4 +1,4 @@
-#Thu Nov 04 12:37:23 CST 2021
-base.0=C\:\\src\\github\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Sat Nov 06 10:38:40 CST 2021
+base.0=D\:\\DESARROLLO DE APLICACIONES\\E-PARKING\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

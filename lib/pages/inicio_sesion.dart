@@ -1,12 +1,17 @@
+import 'package:e_parking/pages/menu_principal.dart';
 import 'package:e_parking/style_utils.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter/material.dart';
 import 'package:e_parking/style_utils.dart';
 import 'package:flutter/services.dart';
 
 class Inicio_sesion extends StatelessWidget {
   static final String routeName = 'inicio_sesion';
+  final correo = TextEditingController();
+  final Password = TextEditingController();
+
+  String email = '';
+  String Pass = '';
 
   @override
   Widget build(BuildContext context) {
@@ -43,8 +48,18 @@ class Inicio_sesion extends StatelessWidget {
             _passwTextField(),
             SizedBox(height: 20.0,),
             _btnLogin(),
+            Text(''),
+            Text('¿Olvidó su contraseña?',style: TextStyle(fontSize: 20, color: Colors.grey,fontWeight: FontWeight.bold )),
+
+            Divider( color: Colors.grey,indent: 40,endIndent: 40,height: 10,thickness: 2.0,),
+            Text(''),
+            Text('¿No tienes cuenta?',style: TextStyle(fontSize: 13, color: Colors.grey,fontWeight: FontWeight.bold )),
+
+
           ],
+
         ),
+
 
         //children:<Widget> [
 
@@ -99,6 +114,7 @@ class Inicio_sesion extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 20.0),
             child: TextField(
               keyboardType: TextInputType.emailAddress,
+              controller: correo,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelStyle: TextStyle(color: Colors.white),
@@ -130,6 +146,7 @@ class Inicio_sesion extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 20.0,),
             child: TextField(
               keyboardType: TextInputType.emailAddress,
+              controller: Password,
               obscureText: true,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
@@ -150,6 +167,7 @@ class Inicio_sesion extends StatelessWidget {
 
   Widget _btnLogin() {
     return StreamBuilder(
+
         builder: (BuildContext context, AsyncSnapshot snapshot){
           return RaisedButton(
             child: Container(
@@ -166,8 +184,39 @@ class Inicio_sesion extends StatelessWidget {
             ),
             elevation: 10.0,
             color:Colors.blue,
-            onPressed: (){
 
+            onPressed: (){
+              email = correo.text;
+              Pass = Password.text;
+              if(email == 'ivan_ali@live.com' && Pass == '123456') {
+                Navigator.of(context).pushNamed(Menu_principal.routeName);
+              }else{
+                showDialog(context: context, builder: (BuildContext context){
+                  return AlertDialog(
+                    title: Text('Inicio sesion'),
+                    content: SingleChildScrollView(
+                      child: ListBody(
+                        children: [
+                          Text('Verifica tus datos')],
+                      ),
+                    ),
+                    actions: [
+                      FlatButton(child: Text('Aceptar'),
+                        onPressed: (){
+                        Navigator.of(context).pop();
+                        },
+                      ),
+                      FlatButton(child: Text('Cancelar'),
+                        onPressed: (){
+                          Navigator.of(context).pop();
+                        },
+                      )
+                    ],
+                  );
+                },
+
+                );
+              }
             },
           );
         }
