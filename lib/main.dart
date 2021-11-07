@@ -1,5 +1,6 @@
 import 'package:e_parking/pages/menu_principal.dart';
 import 'package:e_parking/pages/mi_perfil.dart';
+import 'package:e_parking/pages/mis_reservas.dart';
 import 'package:e_parking/pages/registro_en_aplicacion.dart';
 import 'package:e_parking/pages/pantalla_inicial.dart';
 import 'package:e_parking/pages/pagina_principal.dart';
