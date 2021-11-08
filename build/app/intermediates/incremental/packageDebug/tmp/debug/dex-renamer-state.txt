@@ -1,4 +1,0 @@
-#Sat Nov 06 23:58:30 CST 2021
-base.0=D\:\\DESARROLLO DE APLICACIONES\\E-PARKING\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-renamed.0=classes.dex
-path.0=classes.dex
