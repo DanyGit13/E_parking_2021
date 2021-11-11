@@ -1,3 +1,4 @@
+import 'package:e_parking/pages/inicio_sesion.dart';
 import 'package:e_parking/style_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +34,7 @@ class EstadoMenu extends State<Menu_principal> {
       case 4: return ConfiguracionPrivacidad();
       case 5: return AyudaSoporte();
       case 6: return Contactanos();
+      case 7: return Inicio_sesion();
 
     }
   }
@@ -111,6 +113,13 @@ class EstadoMenu extends State<Menu_principal> {
             leading: Icon(Icons.call_outlined),
             onTap: () {
               onSelectItem(6);
+            },
+          ),
+          ListTile(
+            title: Text('Inicio de Sesion'),
+            leading: Icon(Icons.call_outlined),
+            onTap: () {
+              onSelectItem(7);
             },
           ),
         ]),
