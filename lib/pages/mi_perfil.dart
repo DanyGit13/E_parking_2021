@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Mi_perfil extends StatelessWidget {
   static final String routeName = 'mi_perfil';
@@ -15,11 +17,15 @@ class Mi_perfil extends StatelessWidget {
 }
 
 class EditarPerfil extends StatefulWidget {
-  @override
+
   _EditarPerfilState createState() => _EditarPerfilState();
 }
 
 class _EditarPerfilState extends State<EditarPerfil> {
+    late File _imageFile;
+  final _picker = ImagePicker();
+  @override
+
   bool showPassword = false;
   @override
   Widget build(BuildContext context) {
@@ -56,54 +62,9 @@ class _EditarPerfilState extends State<EditarPerfil> {
                 "Editar Perfil",
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
               ),
+              imageProfile(),
               SizedBox(
                 height: 15,
-              ),
-              Center(
-                child: Stack(
-                  children: [
-                    Container(
-                      width: 130,
-                      height: 130,
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                            width: 4,
-                            color: Theme.of(context).scaffoldBackgroundColor,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                                spreadRadius: 2,
-                                blurRadius: 10,
-                                color: Colors.deepPurple.withOpacity(0.1),
-                                offset: Offset(0, 10))
-                          ],
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: AssetImage('assets/Perfil_imagen.png'),
-                          )),
-                    ),
-                    Positioned(
-                        bottom: 0,
-                        right: 0,
-                        child: Container(
-                          height: 40,
-                          width: 40,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              width: 4,
-                              color: Theme.of(context).scaffoldBackgroundColor,
-                            ),
-                            color: Colors.deepPurple,
-                          ),
-                          child: Icon(
-                            Icons.edit,
-                            color: Colors.white,
-                          ),
-                        )),
-                  ],
-                ),
               ),
               SizedBox(
                 height: 35,
@@ -149,6 +110,110 @@ class _EditarPerfilState extends State<EditarPerfil> {
       ),
     );
   }
+
+  Widget imageProfile(){
+    return Center(
+      child: Stack(
+        children: <Widget>[
+          CircleAvatar(
+            radius: 80.0,
+            backgroundImage: AssetImage("assets/Perfil_imagen.png")
+
+            /*_imageFile==null? AssetImage("assets/Perfil_imagen.png"):FileImage(File(_imageFile.path)),*/
+          ),
+          Positioned(
+              bottom: 20.0,
+              right: 20.0,
+              child: InkWell(
+                onTap: () {
+                  showModalBottomSheet(
+                    context: context,
+                    builder: ((builder) => bottomSheet()),
+                  );
+                },
+                child: Icon(
+                  Icons.camera_alt,
+                  color: Colors.teal,
+                  size: 28.0,
+                ),
+              ),
+          ),
+
+        ],
+      ),
+    );
+  }
+
+  Widget bottomSheet(){
+    return Container(
+      height: 100.0,
+      width: MediaQuery.of(context).size.width,
+      margin: EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 20,
+      ),
+      child: Column(children: <Widget>[
+        Text(
+          "Escoger Foto de Perfil",
+          style: TextStyle(
+            fontSize: 20.0,
+          ),
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+            FlatButton.icon(
+                icon: Icon(Icons.camera),
+              onPressed: () {
+                  tomarFoto(ImageSource.camera);
+              },
+              label: Text("Camara"),
+            ),
+            FlatButton.icon(
+              icon: Icon(Icons.add_photo_alternate),
+              onPressed: () {
+                tomarFoto(ImageSource.gallery);
+              },
+              label: Text("Galeria"),
+            )
+          ]
+        )
+      ],
+      ),
+    );
+  }
+
+  void tomarFoto(ImageSource source) async{
+    var pickedFile = await _picker.pickImage(
+        source: source,
+    );
+    setState(() {
+      _imageFile = pickedFile as File;
+    });
+  }
+
+
+
+    Widget nameTextField() {
+      return TextFormField(
+        decoration: InputDecoration(
+          border: OutlineInputBorder(
+            borderSide: BorderSide(
+          color: Colors.teal,
+            )
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+           color: Colors.orange,
+           width: 2,
+            )
+          )
+        ),
+      );
+    }
+
 
   Widget buildTextField(
       String labelText, String placeholder, bool isPasswordTextField) {
