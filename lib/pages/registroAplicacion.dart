@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:e_parking/style_utils.dart';
 
-class Registro_aplicacion extends StatelessWidget {
-  static final String routeName = 'registro_aplicacion';
+class RegistroAplicacion extends StatelessWidget {
+  static final String routeName = 'Registro aplicación';
 
   @override
   Widget build(BuildContext context) {

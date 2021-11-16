@@ -2,8 +2,11 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'dart:convert';
+import 'dart:async';
 
-class Mi_perfil extends StatelessWidget {
+
+class MiPerfil extends StatelessWidget {
   static final String routeName = 'mi_perfil';
 
   @override
@@ -17,39 +20,17 @@ class Mi_perfil extends StatelessWidget {
 }
 
 class EditarPerfil extends StatefulWidget {
-
   _EditarPerfilState createState() => _EditarPerfilState();
 }
 
 class _EditarPerfilState extends State<EditarPerfil> {
-    late File _imageFile;
+  var _imageFile = null;
   final _picker = ImagePicker();
-  @override
-
   bool showPassword = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     /* appBar: AppBar(
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        elevation: 1,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.deepPurple,
-          ),
-          onPressed: () {},
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(
-              Icons.settings,
-              color: Colors.deepPurple,
-            ),
-            onPressed: () {},
-          ),
-        ],
-      ),*/
       body: Container(
         padding: EdgeInsets.only(left: 10, top: 10, right: 10),
         child: GestureDetector(
@@ -81,25 +62,26 @@ class _EditarPerfilState extends State<EditarPerfil> {
                     padding: EdgeInsets.symmetric(horizontal: 40),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)),
-                    onPressed: (){},
+                    onPressed: () {},
                     child: Text("Cancelar",
-                      style: TextStyle(
-                        fontSize: 14,
-                        letterSpacing: 2.2,
-                        color: Colors.deepPurple)),
+                        style: TextStyle(
+                            fontSize: 14,
+                            letterSpacing: 2.2,
+                            color: Colors.deepPurple)),
                   ),
                   RaisedButton(
-                      onPressed: (){},
-                      color: Colors.deepPurpleAccent,
-                      padding: EdgeInsets.symmetric(horizontal: 40),
-                      elevation: 2,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)
-                      ),
-                    child: Text("Guardar", style: TextStyle(
-                      fontSize: 14,
-                      letterSpacing: 2.2,
-                      color: Colors.deepPurple),
+                    onPressed: () {},
+                    color: Colors.deepPurpleAccent,
+                    padding: EdgeInsets.symmetric(horizontal: 40),
+                    elevation: 2,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    child: Text(
+                      "Guardar",
+                      style: TextStyle(
+                          fontSize: 14,
+                          letterSpacing: 2.2,
+                          color: Colors.deepPurple),
                     ),
                   )
                 ],
@@ -111,40 +93,39 @@ class _EditarPerfilState extends State<EditarPerfil> {
     );
   }
 
-  Widget imageProfile(){
+  Widget imageProfile() {
     return Center(
       child: Stack(
         children: <Widget>[
           CircleAvatar(
             radius: 80.0,
-            backgroundImage: AssetImage("assets/Perfil_imagen.png")
-
-            /*_imageFile==null? AssetImage("assets/Perfil_imagen.png"):FileImage(File(_imageFile.path)),*/
+            backgroundImage: _imageFile == null
+                ?  null
+                : FileImage(File(_imageFile.path)),
           ),
           Positioned(
-              bottom: 20.0,
-              right: 20.0,
-              child: InkWell(
-                onTap: () {
-                  showModalBottomSheet(
-                    context: context,
-                    builder: ((builder) => bottomSheet()),
-                  );
-                },
-                child: Icon(
-                  Icons.camera_alt,
-                  color: Colors.teal,
-                  size: 28.0,
-                ),
+            bottom: 20.0,
+            right: 20.0,
+            child: InkWell(
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: ((builder) => bottomSheet()),
+                );
+              },
+              child: Icon(
+                Icons.camera_alt,
+                color: Colors.teal,
+                size: 28.0,
               ),
+            ),
           ),
-
         ],
       ),
     );
   }
 
-  Widget bottomSheet(){
+  Widget bottomSheet() {
     return Container(
       height: 100.0,
       width: MediaQuery.of(context).size.width,
@@ -162,65 +143,45 @@ class _EditarPerfilState extends State<EditarPerfil> {
         SizedBox(
           height: 20,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-            FlatButton.icon(
-                icon: Icon(Icons.camera),
-              onPressed: () {
-                  tomarFoto(ImageSource.camera);
-              },
-              label: Text("Camara"),
-            ),
-            FlatButton.icon(
-              icon: Icon(Icons.add_photo_alternate),
-              onPressed: () {
-                tomarFoto(ImageSource.gallery);
-              },
-              label: Text("Galeria"),
-            )
-          ]
-        )
-      ],
-      ),
+        Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+          FlatButton.icon(
+            icon: Icon(Icons.camera),
+            onPressed: () {
+              Navigator.pop(context);
+              takePhoto(ImageSource.camera);
+              _imageFile : true;
+            },
+            label: Text("Camara"),
+          ),
+          FlatButton.icon(
+            icon: Icon(Icons.image),
+            onPressed: () {
+              Navigator.pop(context);
+              takePhoto(ImageSource.gallery);
+              _imageFile : true;
+            },
+            label: Text("Galeria"),
+          ),
+        ])
+      ]),
     );
   }
 
-  void tomarFoto(ImageSource source) async{
-    var pickedFile = await _picker.pickImage(
-        source: source,
+  void takePhoto(ImageSource source) async {
+    final pickedFile = await _picker.getImage(
+      source: source,
     );
     setState(() {
-      _imageFile = pickedFile as File;
+      _imageFile = pickedFile;
     });
   }
-
-
-
-    Widget nameTextField() {
-      return TextFormField(
-        decoration: InputDecoration(
-          border: OutlineInputBorder(
-            borderSide: BorderSide(
-          color: Colors.teal,
-            )
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-           color: Colors.orange,
-           width: 2,
-            )
-          )
-        ),
-      );
-    }
-
 
   Widget buildTextField(
       String labelText, String placeholder, bool isPasswordTextField) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 35),
       child: TextField(
-        obscureText: isPasswordTextField ? showPassword: false,
+        obscureText: isPasswordTextField ? showPassword : false,
         decoration: InputDecoration(
             suffixIcon: isPasswordTextField
                 ? IconButton(

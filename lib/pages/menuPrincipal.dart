@@ -1,40 +1,40 @@
-import 'package:e_parking/pages/inicio_sesion.dart';
+import 'package:e_parking/pages/inicioSesion.dart';
 import 'package:e_parking/style_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'mi_perfil.dart';
-import 'metodo_pago.dart';
-import 'mis_reservas.dart';
-import 'mis_vehiculos.dart';
-import 'ayuda_soporte.dart';
+import 'miPerfil.dart';
+import 'metodoPago.dart';
+import 'misReservas.dart';
+import 'misVehiculos.dart';
+import 'ayudaSoporte.dart';
 import 'contactanos.dart';
-import 'configuracion_privacidad.dart';
+import 'configuracionPrivacidad.dart';
 
 
 import 'package:flutter/material.dart';
 import 'package:e_parking/style_utils.dart';
 
-class Menu_principal extends StatefulWidget {
+class MenuPrincipal extends StatefulWidget {
   static final String routeName = 'menu_principal';
   EstadoMenu createState() => EstadoMenu();
 
 }
 
-class EstadoMenu extends State<Menu_principal> {
+class EstadoMenu extends State<MenuPrincipal> {
   int  selectDrawerItem = 0;
 
 
 
   _getDrawerItemWidget(int posicion){
     switch(posicion){
-      case 0: return Mi_perfil();
+      case 0: return MiPerfil();
       case 1: return MetodoPago();
       case 2: return MisVehiculos();
       case 3: return MisReservas();
       case 4: return ConfiguracionPrivacidad();
       case 5: return AyudaSoporte();
       case 6: return Contactanos();
-      case 7: return Inicio_sesion();
+      case 7: return InicioSesion();
 
     }
   }

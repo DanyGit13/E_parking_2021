@@ -1,12 +1,12 @@
-import 'package:e_parking/pages/menu_principal.dart';
-import 'package:e_parking/pages/mi_perfil.dart';
-import 'package:e_parking/pages/mis_reservas.dart';
-import 'package:e_parking/pages/registro_en_aplicacion.dart';
-import 'package:e_parking/pages/pantalla_inicial.dart';
-import 'package:e_parking/pages/pagina_principal.dart';
+import 'package:e_parking/pages/menuPrincipal.dart';
+import 'package:e_parking/pages/miPerfil.dart';
+import 'package:e_parking/pages/misReservas.dart';
+import 'package:e_parking/pages/registroAplicacion.dart';
+import 'package:e_parking/pages/pantallaInicial.dart';
+import 'package:e_parking/pages/paginaPrincipal.dart';
 import 'package:e_parking/style_utils.dart';
 import 'package:flutter/material.dart';
-import 'pages/inicio_sesion.dart';
+import 'pages/inicioSesion.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,14 +19,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
-      initialRoute: Menu_principal.routeName,
+      initialRoute: MenuPrincipal.routeName,
       routes: {
-        Menu_principal.routeName: (_) => Menu_principal(),
+        MenuPrincipal.routeName: (_) => MenuPrincipal(),
         Pantalla_inicial.routeName: (_) => Pantalla_inicial(),
-        Inicio_sesion.routeName: (_) => Inicio_sesion(),
+        InicioSesion.routeName: (_) => InicioSesion(),
         Pagina_principal.routeName: (_) => Pagina_principal(),
-        Registro_aplicacion.routeName: (_) => Registro_aplicacion(),
-        Mi_perfil.routeName: (_) => Mi_perfil(),
+        RegistroAplicacion.routeName: (_) => RegistroAplicacion(),
+        MiPerfil.routeName: (_) => MiPerfil(),
       },
     );
   }

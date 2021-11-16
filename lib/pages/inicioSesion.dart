@@ -1,11 +1,11 @@
-import 'package:e_parking/pages/menu_principal.dart';
+import 'package:e_parking/pages/menuPrincipal.dart';
 import 'package:e_parking/style_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:e_parking/style_utils.dart';
 import 'package:flutter/services.dart';
 
-class Inicio_sesion extends StatelessWidget {
+class InicioSesion extends StatelessWidget {
   static final String routeName = 'inicio_sesion';
   final correo = TextEditingController();
   final Password = TextEditingController();
@@ -189,7 +189,7 @@ class Inicio_sesion extends StatelessWidget {
               email = correo.text;
               Pass = Password.text;
               if(email == 'ivan_ali@live.com' && Pass == '123456') {
-                Navigator.of(context).pushNamed(Menu_principal.routeName);
+                Navigator.of(context).pushNamed(MenuPrincipal.routeName);
               }else{
                 showDialog(context: context, builder: (BuildContext context){
                   return AlertDialog(
