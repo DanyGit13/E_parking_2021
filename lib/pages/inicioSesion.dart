@@ -1,5 +1,6 @@
 import 'package:e_parking/pages/menuPrincipal.dart';
 import 'package:e_parking/style_utils.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:e_parking/style_utils.dart';
@@ -49,13 +50,29 @@ class InicioSesion extends StatelessWidget {
             SizedBox(height: 20.0,),
             _btnLogin(),
             Text(''),
-            Text('¿Olvidó su contraseña?',style: TextStyle(fontSize: 20, color: Colors.grey,fontWeight: FontWeight.bold )),
+            Container(
+              width: double.infinity,
+              alignment: Alignment.center,
+              child: CupertinoButton(
+                padding: EdgeInsets.symmetric(vertical: 5),
+                child: Text(
+                    "→ ¿Olvidó su contraseña?", style: TextStyle(fontSize: 15, color: Colors.lightBlueAccent,fontWeight: FontWeight.bold )
+                ),
+                onPressed: (){},
+              ),
+            ),
 
             Divider( color: Colors.grey,indent: 40,endIndent: 40,height: 10,thickness: 2.0,),
-            Text(''),
-            Text('¿No tienes cuenta?',style: TextStyle(fontSize: 13, color: Colors.grey,fontWeight: FontWeight.bold )),
-
-
+            SizedBox(
+              height:10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children:<Widget> [
+                Text('¿No tienes cuenta?',style: TextStyle(fontSize: 13, color: Colors.white,fontWeight: FontWeight.bold )),
+                CupertinoButton(child: Text("Registrarse",style: TextStyle(color: Colors.lightBlue )), onPressed: () {})
+              ],
+            ),
           ],
 
         ),
