@@ -1,4 +1,5 @@
 import 'package:e_parking/pages/menuPrincipal.dart';
+import 'package:e_parking/pages/registroAplicacion.dart';
 import 'package:e_parking/style_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +59,9 @@ class InicioSesion extends StatelessWidget {
                 child: Text(
                     "→ ¿Olvidó su contraseña?", style: TextStyle(fontSize: 15, color: Colors.lightBlueAccent,fontWeight: FontWeight.bold )
                 ),
-                onPressed: (){},
+                onPressed: (){
+                  //Navigator.of(context).pushNamed(recuperaPassword.routeName);
+                  },
               ),
             ),
 
@@ -70,7 +73,10 @@ class InicioSesion extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children:<Widget> [
                 Text('¿No tienes cuenta?',style: TextStyle(fontSize: 13, color: Colors.white,fontWeight: FontWeight.bold )),
-                CupertinoButton(child: Text("Registrarse",style: TextStyle(color: Colors.lightBlue )), onPressed: () {})
+                CupertinoButton(child: Text("Registrarse",style: TextStyle(color: Colors.lightBlue )), onPressed: () {
+                  Navigator.of(context).pushNamed(RegistroAplicacion.routeName);
+                }
+                )
               ],
             ),
           ],
