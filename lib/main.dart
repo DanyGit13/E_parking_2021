@@ -1,6 +1,7 @@
 import 'package:e_parking/pages/menuPrincipal.dart';
 import 'package:e_parking/pages/miPerfil.dart';
 import 'package:e_parking/pages/misReservas.dart';
+import 'package:e_parking/pages/recuperaPassword.dart';
 import 'package:e_parking/pages/registroAplicacion.dart';
 import 'package:e_parking/pages/pantallaInicial.dart';
 import 'package:e_parking/pages/paginaPrincipal.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         Pagina_principal.routeName: (_) => Pagina_principal(),
         RegistroAplicacion.routeName: (_) => RegistroAplicacion(),
         MiPerfil.routeName: (_) => MiPerfil(),
+        RecuperarPassword.routeName: (_) => RecuperarPassword(),
       },
     );
   }

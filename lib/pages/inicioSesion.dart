@@ -1,4 +1,5 @@
 import 'package:e_parking/pages/menuPrincipal.dart';
+import 'package:e_parking/pages/recuperaPassword.dart';
 import 'package:e_parking/pages/registroAplicacion.dart';
 import 'package:e_parking/style_utils.dart';
 import 'package:flutter/cupertino.dart';
@@ -60,7 +61,7 @@ class InicioSesion extends StatelessWidget {
                     "→ ¿Olvidó su contraseña?", style: TextStyle(fontSize: 15, color: Colors.lightBlueAccent,fontWeight: FontWeight.bold )
                 ),
                 onPressed: (){
-                  //Navigator.of(context).pushNamed(recuperaPassword.routeName);
+                  Navigator.of(context).pushNamed(RecuperarPassword.routeName);
                   },
               ),
             ),
