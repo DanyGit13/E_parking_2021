@@ -9,6 +9,7 @@ import 'package:e_parking/style_utils.dart';
 import 'package:flutter/material.dart';
 import 'pages/inicioSesion.dart';
 
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.deepPurple,
       ),
       initialRoute: InicioSesion.routeName,
+
       routes: {
         MenuPrincipal.routeName: (_) => MenuPrincipal(),
         Pantalla_inicial.routeName: (_) => Pantalla_inicial(),
@@ -29,6 +31,7 @@ class MyApp extends StatelessWidget {
         RegistroAplicacion.routeName: (_) => RegistroAplicacion(),
         MiPerfil.routeName: (_) => MiPerfil(),
         RecuperarPassword.routeName: (_) => RecuperarPassword(),
+
       },
     );
   }
