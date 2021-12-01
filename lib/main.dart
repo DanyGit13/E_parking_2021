@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
-      initialRoute: InicioSesion.routeName,
+      initialRoute: RegistroAplicacion.routeName,
 
       routes: {
         MenuPrincipal.routeName: (_) => MenuPrincipal(),
