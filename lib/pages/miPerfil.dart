@@ -1,29 +1,32 @@
 import 'dart:io';
+import 'package:e_parking/pages/menuPrincipal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:convert';
 import 'dart:async';
 
+import 'mapaPage.dart';
+import 'misReservas.dart';
 
-class MiPerfil extends StatelessWidget {
+
+class MiPerfil extends StatefulWidget {
   static final String routeName = 'mi_perfil';
 
-  @override
+  _EditarPerfilState createState() => _EditarPerfilState();
+
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Setting UI",
-      home: EditarPerfil(),
+      home: MiPerfil(),
     );
   }
 }
 
-class EditarPerfil extends StatefulWidget {
-  _EditarPerfilState createState() => _EditarPerfilState();
-}
 
-class _EditarPerfilState extends State<EditarPerfil> {
+
+class _EditarPerfilState extends State<MiPerfil> {
   var _imageFile = null;
   final _picker = ImagePicker();
   bool showPassword = false;
@@ -43,7 +46,6 @@ class _EditarPerfilState extends State<EditarPerfil> {
                 "Editar Perfil",
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
               ),
-              imageProfile(),
               SizedBox(
                 height: 15,
               ),
@@ -51,9 +53,8 @@ class _EditarPerfilState extends State<EditarPerfil> {
                 height: 35,
               ),
               buildTextField(
-                  "Nombre Completo", "Daniel Guerrero Delgado", false),
-              buildTextField("Numero telefonico", "+50687360481", false),
-              buildTextField("Email", "daniel.guerrero13@outlook.com", false),
+                  "Nombre Completo", "", false),
+              buildTextField("Email", "", false),
               buildTextField("Cambiar Contraseña", "*********", true),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,7 +63,9 @@ class _EditarPerfilState extends State<EditarPerfil> {
                     padding: EdgeInsets.symmetric(horizontal: 40),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => MenuPrincipal()));
+                    },
                     child: Text("Cancelar",
                         style: TextStyle(
                             fontSize: 14,
@@ -93,7 +96,7 @@ class _EditarPerfilState extends State<EditarPerfil> {
     );
   }
 
-  Widget imageProfile() {
+/*  Widget imageProfile() {
     return Center(
       child: Stack(
         children: <Widget>[
@@ -123,7 +126,7 @@ class _EditarPerfilState extends State<EditarPerfil> {
         ],
       ),
     );
-  }
+  }*/
 
   Widget bottomSheet() {
     return Container(

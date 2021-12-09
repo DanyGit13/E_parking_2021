@@ -5,6 +5,8 @@ import 'package:e_parking/modelos/cliente.model.dart';
 import 'package:e_parking/pages/text_box.dart';
 import 'package:e_parking/peticiones/cliente.peticion.dart';
 
+import 'mapaPage.dart';
+
 
 class RegistroAplicacion extends StatelessWidget {
   static final String routeName = 'registro_aplicacion';
@@ -28,11 +30,8 @@ class CrearRegistro extends StatefulWidget {
 
 class _CrearRegistroState extends State<CrearRegistro> {
   late TextEditingController controllerName;
-  late TextEditingController controllerSurname;
-  late TextEditingController controllerPhone;
   late TextEditingController controllerEmail;
   late TextEditingController controllerPassword;
-  late TextEditingController controllerId;
   var _imageFile = null;
 
   bool showPassword = false;
@@ -41,11 +40,8 @@ class _CrearRegistroState extends State<CrearRegistro> {
   @override
   void initState() {
     controllerName = new TextEditingController();
-    controllerSurname = new TextEditingController();
-    controllerPhone = new TextEditingController();
     controllerEmail = new TextEditingController();
     controllerPassword = new TextEditingController();
-    controllerId = new TextEditingController();
     super.initState();
   }
   @override
@@ -53,7 +49,7 @@ class _CrearRegistroState extends State<CrearRegistro> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: Text('Registrar'),
+        title: Text('Registrar Usuario'),
         leading: IconButton(
             icon: Icon(Icons.arrow_back_ios),
           onPressed: () {
@@ -76,11 +72,8 @@ class _CrearRegistroState extends State<CrearRegistro> {
                 height: 0,
               ),
               TextBox(controllerName,"Nombre"),
-              TextBox(controllerSurname,"Apellido"),
-              TextBox(controllerPhone, "telefono"),
               TextBox(controllerEmail, "email"),
               TextBox(controllerPassword,"Contraseña"),
-              TextBox(controllerId,"Identificacion"),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -89,7 +82,9 @@ class _CrearRegistroState extends State<CrearRegistro> {
                     padding: EdgeInsets.symmetric(horizontal: 40),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => InicioSesion()));
+                    },
                     child: Text("Cancelar",
                         style: TextStyle(
                             fontSize: 14,
@@ -99,22 +94,19 @@ class _CrearRegistroState extends State<CrearRegistro> {
                   RaisedButton(
                     onPressed: () {
                       String name = controllerName.text;
-                      String surname = controllerSurname.text;
-                      String phone = controllerPhone.text;
                       String email = controllerEmail.text;
                       String password = controllerPassword.text;
-                      String id = controllerId.text;
 
                       if (name.isNotEmpty &&
-                          surname.isNotEmpty &&
-                          phone.isNotEmpty) {
-                        Client c =
-                        new Client(name: name, surname: surname, phone: phone, email: email, password: password, id: id);
+                          email.isNotEmpty &&
+                          password.isNotEmpty) {
+                        User c =
+                        new User(name: name, email: email, password: password);
 
-                        addClient(c).then((client) {
-                          if (client.id != '') {
+                        addUser(c).then((client) {
+                          if (client.email != '') {
                             print('Cliente registrado...!');
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => MenuPrincipal()));
+                            Navigator.of(context).pushNamed(MapaPage.routeName);
                           }
                         });
                       }

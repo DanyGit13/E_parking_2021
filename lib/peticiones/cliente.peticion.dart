@@ -3,93 +3,90 @@ import 'dart:convert';
 import 'package:e_parking/modelos/cliente.model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'dart:async';
+import 'dart:convert';
 
-Future<List<Client>> listClient() async {
+Future<List<User>> listUser() async {
   final response =
-      await http.get(Uri.parse('http://192.168.100.39:4002/api/clientes'));
+      await http.get(Uri.parse('http://192.168.100.39:3000/users'));
   print(response.body);
 
   return compute(goToList, response.body);
 }
 
-List<Client> goToList(String responseBody) {
+List<User> goToList(String responseBody) {
   //aqui convertimos el body de la respuesta a JSON
   final pasar = json.decode(responseBody);
   //aqui convertimos el JSON a un objeto tipo CLient y lo retornamos
-  return pasar['clientes']
-      .map<Client>((json) => Client.fromJson(json))
+  return pasar['user']
+      .map<User>((json) => User.fromJson(json))
       .toList();
 }
 
-mapClient(Client client, bool mapId) {
+mapUser(User user, bool mapId) {
   Map data;
   if (mapId) {
     data = {
-      '_id': '${client.id}',
-      'nombre': '${client.name}',
-      'apellido': '${client.surname}',
-      'telefono': '${client.phone}',
-      'email': '${client.email}',
-      'id': '${client.DNI}',
-      'password': '${client.password}',
+
+      'name': '${user.name}',
+      'email': '${user.email}',
+      'password': '${user.password}',
     };
   } else {
     data = {
-      'nombre': '${client.name}',
-      'apellido': '${client.surname}',
-      'telefono': '${client.phone}',
-      'email': '${client.email}',
-      'id': '${client.DNI}',
-      'password': '${client.password}',
+
+      'name': '${user.name}',
+      'email': '${user.email}',
+      'password': '${user.password}',
     };
   }
 
   return data;
 }
 
-Future<Client> addClient(Client client) async {
-  var url = Uri.parse('http://192.168.100.39:4002/api/clientes/registro');
+Future<User> addUser(User user) async {
+  var url = Uri.parse('http://192.168.100.39:3000/users');
 
-  var body = json.encode(mapClient(client, false));
+  var body = json.encode(mapUser(user, false));
 
   var response = await http.post(url,
       headers: {'Content-Type': 'application/json; charset=UTF-8'}, body: body);
   print("${response}");
 
   if (response.statusCode == 200) {
-    return Client.fromJson(jsonDecode(response.body)['cliente']);
+    return User.fromJson(jsonDecode(response.body)['user']);
   } else {
-    throw Exception('Failed to load client');
+    throw Exception('Failed to load user');
   }
 }
 
-Future<Client> deleteClient(String clientId) async {
-  print(clientId);
+Future<User> deleteUser(String userId) async {
+  print(userId);
   final http.Response response = await http.delete(
-    Uri.parse('http://192.168.100.39:4002/api/clientes/eliminar/$clientId'),
+    Uri.parse('http://192.168.100.39:3000/users$userId'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
   );
 
   if (response.statusCode == 200) {
-    return Client.fromJson(jsonDecode(response.body)['cliente']);
+    return User.fromJson(jsonDecode(response.body)['user']);
   } else {
     print(response.statusCode);
     throw Exception('Failed to Delete client');
   }
 }
 
-Future<Client> modifyClient(Client client) async {
-  var url = Uri.parse('http://192.168.100.39:4002/api/clientes/modificar');
+Future<User> modifyClient(User user) async {
+  var url = Uri.parse('http://192.168.100.39:3000/users');
 
-  var body = json.encode(mapClient(client, true));
+  var body = json.encode(mapUser(user, true));
   print(body);
 
   var response = await http.put(url,
       headers: {"Content-Type": "application/json"}, body: body);
   if (response.statusCode == 200) {
-    return Client.fromJson(jsonDecode(response.body)['cliente']);
+    return User.fromJson(jsonDecode(response.body)['user']);
   } else {
     print(response.statusCode);
     throw Exception('Failed to modify client');

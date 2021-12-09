@@ -1,3 +1,4 @@
+import 'package:e_parking/pages/mapaPage.dart';
 import 'package:e_parking/pages/menuPrincipal.dart';
 import 'package:e_parking/pages/miPerfil.dart';
 import 'package:e_parking/pages/misReservas.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
-      initialRoute: InicioSesion.routeName,
+      initialRoute: MenuPrincipal.routeName,
 
       routes: {
         MenuPrincipal.routeName: (_) => MenuPrincipal(),
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         RegistroAplicacion.routeName: (_) => RegistroAplicacion(),
         MiPerfil.routeName: (_) => MiPerfil(),
         RecuperarPassword.routeName: (_) => RecuperarPassword(),
+        MapaPage.routeName: (_) => MapaPage(),
 
       },
     );

@@ -8,6 +8,7 @@ import 'misVehiculos.dart';
 import 'ayudaSoporte.dart';
 import 'contactanos.dart';
 import 'configuracionPrivacidad.dart';
+import 'mapaPage.dart';
 
 
 
@@ -18,20 +19,19 @@ class MenuPrincipal extends StatefulWidget {
 }
 
 class EstadoMenu extends State<MenuPrincipal> {
-  int  selectDrawerItem = 0;
+  int  selectDrawerItem = 5;
 
 
 
   _getDrawerItemWidget(int posicion){
     switch(posicion){
       case 0: return MiPerfil();
-      case 1: return MetodoPago();
-      case 2: return MisVehiculos();
-      case 3: return MisReservas();
-      case 4: return ConfiguracionPrivacidad();
-      case 5: return AyudaSoporte();
-      case 6: return Contactanos();
-      case 7: return InicioSesion();
+      case 1: return MisVehiculos();
+      case 2: return MisReservas();
+      case 3: return AyudaSoporte();
+      case 4: return Contactanos();
+      case 5: return MapaPage();
+
     }
   }
 
@@ -70,52 +70,31 @@ class EstadoMenu extends State<MenuPrincipal> {
             },
           ),
           ListTile(
-            title: Text('Método de pago'),
-            leading: Icon(Icons.attach_money),
-            onTap: () {
-              onSelectItem(1);
-            },
-          ),
-          ListTile(
             title: Text('Mis vehículos'),
             leading: Icon(Icons.airport_shuttle_sharp),
             onTap: (){
-              onSelectItem(2);
+              onSelectItem(1);
             },
           ),
           ListTile(
             title: Text('Mis reservas'),
             leading: Icon(Icons.assignment),
             onTap: () {
-              onSelectItem(3);
-            },
-          ),
-          ListTile(
-            title: Text('Configuración de privacidad'),
-            leading: Icon(Icons.privacy_tip_outlined),
-            onTap: () {
-              onSelectItem(4);
+              onSelectItem(2);
             },
           ),
           ListTile(
             title: Text('Ayuda y soporte'),
             leading: Icon(Icons.support_agent),
             onTap: () {
-              onSelectItem(5);
+              onSelectItem(3);
             },
           ),
           ListTile(
             title: Text('Contáctanos'),
             leading: Icon(Icons.call_outlined),
             onTap: () {
-              onSelectItem(6);
-            },
-          ),
-          ListTile(
-            title: Text('Inicio de Sesion'),
-            leading: Icon(Icons.call_outlined),
-            onTap: () {
-              onSelectItem(7);
+              onSelectItem(4);
             },
           ),
         ]),
