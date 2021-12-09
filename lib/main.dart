@@ -6,6 +6,7 @@ import 'package:e_parking/pages/recuperaPassword.dart';
 import 'package:e_parking/pages/registroAplicacion.dart';
 import 'package:e_parking/pages/pantallaInicial.dart';
 import 'package:e_parking/pages/paginaPrincipal.dart';
+import 'package:e_parking/pages/registroVehicle.dart';
 import 'package:e_parking/style_utils.dart';
 import 'package:flutter/material.dart';
 import 'pages/inicioSesion.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
-      initialRoute: MenuPrincipal.routeName,
+      initialRoute: RegistroVehiulo.routeName,
 
       routes: {
         MenuPrincipal.routeName: (_) => MenuPrincipal(),
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         MiPerfil.routeName: (_) => MiPerfil(),
         RecuperarPassword.routeName: (_) => RecuperarPassword(),
         MapaPage.routeName: (_) => MapaPage(),
+        RegistroVehiulo.routeName: (_) => RegistroVehiulo(),
 
       },
     );
