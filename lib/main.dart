@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
-      initialRoute: RegistroVehiulo.routeName,
+      initialRoute: MenuPrincipal.routeName,
 
       routes: {
         MenuPrincipal.routeName: (_) => MenuPrincipal(),
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         MiPerfil.routeName: (_) => MiPerfil(),
         RecuperarPassword.routeName: (_) => RecuperarPassword(),
         MapaPage.routeName: (_) => MapaPage(),
-        RegistroVehiulo.routeName: (_) => RegistroVehiulo(),
+        RegistroVehiculo.routeName: (_) => RegistroVehiculo(),
 
       },
     );

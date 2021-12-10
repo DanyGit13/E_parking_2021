@@ -8,7 +8,7 @@ import 'dart:convert';
 
 Future<List<Vehicle>> listVehicle() async {
   final response =
-  await http.get(Uri.parse('http://192.168.100.39:3000/vehicles'));
+      await http.get(Uri.parse('http://192.168.100.39:3000/vehicles'));
   print(response.body);
 
   return compute(goToList, response.body);
@@ -27,7 +27,6 @@ mapVehicle(Vehicle vehicle, bool mapId) {
   Map data;
   if (mapId) {
     data = {
-
       'plate': '${vehicle.plate}',
       'model': '${vehicle.model}',
       'brand': '${vehicle.brand}',
@@ -35,7 +34,6 @@ mapVehicle(Vehicle vehicle, bool mapId) {
     };
   } else {
     data = {
-
       'plate': '${vehicle.plate}',
       'model': '${vehicle.model}',
       'brand': '${vehicle.brand}',
@@ -62,7 +60,7 @@ Future<Vehicle> addVehicle(Vehicle vehicle) async {
   }
 }
 
-Future<Vehicle> deleteVehicle(String vehicleId) async {
+Future<Vehicle> deleteVehicle(int vehicleId) async {
   print(vehicleId);
   final http.Response response = await http.delete(
     Uri.parse('http://192.168.100.39:3000/vehicles$vehicleId'),

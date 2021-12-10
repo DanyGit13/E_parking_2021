@@ -8,7 +8,7 @@ import 'package:e_parking/pages/text_box.dart';
 import 'inicioSesion.dart';
 import 'mapaPage.dart';
 
-class RegistroVehiulo extends StatelessWidget {
+class RegistroVehiculo extends StatelessWidget {
   static final String routeName = 'registro_vehiculo';
 
   @override
