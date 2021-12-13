@@ -7,9 +7,11 @@ import 'package:e_parking/pages/text_box.dart';
 
 import 'inicioSesion.dart';
 import 'mapaPage.dart';
+import 'menuPrincipal.dart';
 
 class RegistroVehiculo extends StatelessWidget {
   static final String routeName = 'registro_vehiculo';
+
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +87,7 @@ class _CrearRegistroVehiculoState extends State<CrearRegistroVehiculo>{
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)),
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => InicioSesion()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => MenuPrincipal()));
                     },
                     child: Text("Cancelar",
                         style: TextStyle(
@@ -109,7 +111,7 @@ class _CrearRegistroVehiculoState extends State<CrearRegistroVehiculo>{
 
                         addVehicle(v).then((vehicle) {
                           if (vehicle.plate != '') {
-                            print('Vehiculo registrado...!');
+                            Text('Vehiculo registrado...!');
                             Navigator.of(context).pushNamed(MapaPage.routeName);
                           }
                         });
@@ -120,8 +122,7 @@ class _CrearRegistroVehiculoState extends State<CrearRegistroVehiculo>{
                     elevation: 2,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)),
-                    child: Text(
-                      "Guardar",
+                    child: Text("Guardar",
                       style: TextStyle(
                           fontSize: 14,
                           letterSpacing: 2.2,

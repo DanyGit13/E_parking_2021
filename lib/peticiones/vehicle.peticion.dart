@@ -6,22 +6,27 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
+
+
 Future<List<Vehicle>> listVehicle() async {
   final response =
       await http.get(Uri.parse('http://192.168.100.39:3000/vehicles'));
   print(response.body);
 
-  return compute(goToList, response.body);
+  return compute(decodeJson, response.body);
 }
 
-List<Vehicle> goToList(String responseBody) {
+
+
+List<Vehicle> decodeJson(String responseBody) {
   //aqui convertimos el body de la respuesta a JSON
-  final pasar = json.decode(responseBody);
-  //aqui convertimos el JSON a un objeto tipo CLient y lo retornamos
-  return pasar['vehicles']
+  final myJson = json.decode(responseBody);
+  //aqui convertimos el JSON a un objeto tipo vehiculo y lo retornamos
+  return myJson['vehicles']
       .map<Vehicle>((json) => Vehicle.fromJson(json))
       .toList();
 }
+
 
 mapVehicle(Vehicle vehicle, bool mapId) {
   Map data;
