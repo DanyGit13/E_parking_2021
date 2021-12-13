@@ -1,4 +1,5 @@
 class Vehicle{
+
   var plate;
   var model;
   var brand;
@@ -7,12 +8,13 @@ class Vehicle{
 
   Vehicle({this.plate, this.model, this.brand, this.type});
 
-  factory Vehicle.fromJson(Map<String, dynamic> json) {
+  factory Vehicle.fromJson(Map<String, dynamic> parsedjson) {
     return Vehicle(
-      plate: json['placa'],
-      model: json['modelo'],
-      brand: json['marca'],
-      type: json['tipo'],
+
+      plate: parsedjson['placa'],
+      model: parsedjson['modelo'],
+      brand: parsedjson['marca'],
+      type: parsedjson['tipo'],
     );
   }
 }

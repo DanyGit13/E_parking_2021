@@ -55,7 +55,7 @@ class _MisVehiculosState extends State<MisVehiculos> {
                 }
           });
         },
-        tooltip: "Agregar Contacto",
+        tooltip: "Agregar Vehiculo",
         child: Icon(Icons.add),
       ),
     );
@@ -66,7 +66,7 @@ class _MisVehiculosState extends State<MisVehiculos> {
         context: context,
         builder: (_) =>
             AlertDialog(
-              title: Text("Eliminar Cliente"),
+              title: Text("Eliminar Vehiculo"),
               content: Text(
                   "Esta seguro de eliminar a " + vehicle.plate + "?"),
               actions: [
@@ -154,7 +154,7 @@ class _MisVehiculosState extends State<MisVehiculos> {
               });
             });
           },
-          title: Text(vehicles[index].type +  vehicles[index].model),
+          title: Text(vehicles[index].type  +  vehicles[index].model),
           subtitle: Text(vehicles[index].plate),
           trailing: Icon(
             Icons.airport_shuttle,

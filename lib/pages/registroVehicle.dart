@@ -95,38 +95,38 @@ class _CrearRegistroVehiculoState extends State<CrearRegistroVehiculo>{
                             letterSpacing: 2.2,
                             color: Colors.deepPurple)),
                   ),
-                  RaisedButton(
-                    onPressed: () {
-                      String plate = controllerPlate.text;
-                      String model = controllerModel.text;
-                      String brand = controllerBrand.text;
-                      String type = controllerType.text;
+                  Center(
+                    child: RaisedButton(
+                      onPressed: () {
+                        String plate = controllerPlate.text;
+                        String model = controllerModel.text;
+                        String brand = controllerBrand.text;
+                        String type = controllerType.text;
 
-                      if (plate.isNotEmpty &&
-                          model.isNotEmpty &&
-                          brand.isNotEmpty &&
-                          type.isNotEmpty) {
-                        Vehicle v =
-                        new Vehicle(plate: plate, model: model, brand: brand, type: type);
+                        if (plate.isNotEmpty &&
+                            model.isNotEmpty &&
+                            brand.isNotEmpty &&
+                            type.isNotEmpty) {
+                          Vehicle v =
+                          new Vehicle(plate: plate, model: model, brand: brand, type: type);
 
-                        addVehicle(v).then((vehicle) {
-                          if (vehicle.plate != '') {
-                            Text('Vehiculo registrado...!');
-                            Navigator.of(context).pushNamed(MapaPage.routeName);
-                          }
-                        });
-                      }
-                    },
-                    color: Colors.deepPurpleAccent,
-                    padding: EdgeInsets.symmetric(horizontal: 40),
-                    elevation: 2,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Text("Guardar",
-                      style: TextStyle(
-                          fontSize: 14,
-                          letterSpacing: 2.2,
-                          color: Colors.deepPurple),
+                          addVehicle(v).then((vehicle) {
+                              Text('Vehiculo registrado...!');
+                              Navigator.of(context).pushNamed(MapaPage.routeName);
+                          });
+                        }
+                      },
+                      color: Colors.deepPurpleAccent,
+                      padding: EdgeInsets.symmetric(horizontal: 40),
+                      elevation: 2,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Text("Guardar",
+                        style: TextStyle(
+                            fontSize: 14,
+                            letterSpacing: 2.2,
+                            color: Colors.deepPurple),
+                      ),
                     ),
                   )
                 ],
